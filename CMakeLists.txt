@@ -11,3 +11,13 @@ target_include_directories(
     utils PRIVATE
     src/include
 )
+
+add_executable(
+    main
+    src/main.cc
+)
+
+target_link_libraries(
+    main
+    utils
+)

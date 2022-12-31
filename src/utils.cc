@@ -2,6 +2,9 @@
 #include <stdexcept>
 #ifdef _WIN32
 #include <windows.h>
+#else
+
+#include <dirent.h>
 #endif
 
 #ifdef _WIN32
@@ -31,6 +34,25 @@ std::size_t count_files(const std::string &folder)
     
 }
 #else
-std::size_t 
+std::size_t count_files(const std::string &folder)
+{
+    size_t counter = 0;
+    DIR *dp = opendir(folder.c_str());
+    if (dp == nullptr)
+    {
+        throw std::runtime_error("Failed open folder " + folder);
+    }
+
+    struct dirent *ep = nullptr;
+    while ((ep = readdir(dp)) != nullptr)
+    {
+        if (ep->d_name[0] != '.')
+            counter++;
+    }
+    (void)closedir(dp);
+    return counter;
+    
+    
+}
 
 #endif
