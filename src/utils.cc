@@ -1,4 +1,6 @@
 #include <string>
+#include <vector>
+#include <algorithm>
 #include <fstream>
 #include <stdexcept>
 #ifdef _WIN32
@@ -81,4 +83,37 @@ std::string file_contents(const std::string& filename)
         throw std::runtime_error("Failed open file ");
     }
     return std::string{(std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>())};
+}
+
+std::string get_seq(const std::string& fasta_filename, const std::string& chr_name)
+{
+    std::ifstream ifs(fasta_filename);
+    if (!ifs)
+    {
+        throw std::runtime_error("Failed open file ");
+    }
+
+    std::string line;
+    std::vector<std::string> lines;
+    
+    while (std::getline(ifs, line) && line != (">" + chr_name))
+    {
+        
+    }
+    if (!ifs)
+    {
+        throw std::runtime_error("Fasta has no this chr");
+    }
+    while (std::getline(ifs, line) && line.substr(0, 1) != ">")
+    {
+        lines.push_back(line);
+    }
+    if (lines.size() == 0)
+    {
+        throw std::runtime_error("Fasta file error");
+    }
+    std::string cat_line;
+    for (const auto &s : lines) cat_line += s;
+    
+    return cat_line;
 }
