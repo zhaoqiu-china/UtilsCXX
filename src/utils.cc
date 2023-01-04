@@ -1,4 +1,5 @@
 #include <string>
+#include <fstream>
 #include <stdexcept>
 #ifdef _WIN32
 #include <windows.h>
@@ -56,3 +57,28 @@ std::size_t count_files(const std::string &folder)
 }
 
 #endif
+
+std::size_t count_lines(const std::string& filename)
+{
+    std::ifstream ifs(filename);
+    if (!ifs)
+    {
+        throw std::runtime_error("Failed open file ");
+    }
+
+    std::string line;
+    size_t counter = 0;
+    while (std::getline(ifs, line))
+        counter++;
+    return counter;
+}
+
+std::string file_contents(const std::string& filename)
+{
+    std::ifstream ifs(filename, std::ios_base::binary);
+    if (!ifs)
+    {
+        throw std::runtime_error("Failed open file ");
+    }
+    return std::string{(std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>())};
+}
