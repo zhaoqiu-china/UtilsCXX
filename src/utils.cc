@@ -9,6 +9,7 @@
 
 #include <dirent.h>
 #endif
+#include "utils.h"
 
 #ifdef _WIN32
 std::size_t count_files(const std::string &folder)
@@ -114,6 +115,21 @@ std::string get_seq(const std::string& fasta_filename, const std::string& chr_na
     }
     std::string cat_line;
     for (const auto &s : lines) cat_line += s;
+
     
     return cat_line;
+}
+
+hash_t hash_(char const *str)
+{
+    hash_t ret{basis};
+
+    while (*str)
+    {
+        ret ^= *str;
+        ret *= prime;
+        str++;
+    }
+    
+    return ret;
 }
