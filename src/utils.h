@@ -1,6 +1,6 @@
 #pragma once
-
 #include <string>
+#include <vector>
 
 typedef std::uint64_t hash_t;
 constexpr hash_t prime = 0x100000001B3ull;
@@ -13,6 +13,8 @@ std::size_t count_lines(const std::string& filename);
 std::string file_contents(const std::string& filename);
 
 std::string get_seq(const std::string& fasta_filename, const std::string& chr_name);
+
+std::vector<int> str_split_to_int(const std::string& str);
 
 hash_t hash_(char const* str);
 

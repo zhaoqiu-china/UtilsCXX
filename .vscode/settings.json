@@ -45,6 +45,12 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "algorithm": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "locale": "cpp",
+        "regex": "cpp",
+        "xlocbuf": "cpp",
+        "xlocmes": "cpp",
+        "xlocmon": "cpp",
+        "xloctime": "cpp"
     }
 }

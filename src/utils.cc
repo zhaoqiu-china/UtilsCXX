@@ -3,10 +3,10 @@
 #include <algorithm>
 #include <fstream>
 #include <stdexcept>
+#include <regex>
 #ifdef _WIN32
 #include <windows.h>
 #else
-
 #include <dirent.h>
 #endif
 #include "utils.h"
@@ -118,6 +118,19 @@ std::string get_seq(const std::string& fasta_filename, const std::string& chr_na
 
     
     return cat_line;
+}
+// example: 1,2 to [1,2]
+// TODO: 1,2;4-9
+std::vector<int> str_split_to_int(const std::string &str)
+{
+    std::regex re{"[,]"};
+    std::vector<std::string> v(std::sregex_token_iterator(str.begin(), str.end(), re, -1), std::sregex_token_iterator());
+    std::vector<int> v_int;
+    for (const auto& s: v)
+    {
+        v_int.push_back(std::stoi(s));
+    }
+    return v_int;
 }
 
 hash_t hash_(char const *str)
