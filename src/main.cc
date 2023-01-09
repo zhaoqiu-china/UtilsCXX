@@ -17,7 +17,7 @@ int main()
     // default:
     //     break;
     // }
-    std::string str("1,2,3,");
+    std::string str("1");
     auto v = str_split_to_int(str);
     for (const auto& value: v)
     {
