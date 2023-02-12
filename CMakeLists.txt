@@ -22,15 +22,15 @@ target_include_directories(
     src/include
 )
 
-# add_executable(
-#     main
-#     src/main.cc
-# )
+add_executable(
+    main
+    src/main.cc
+)
 
-# target_link_libraries(
-#     main
-#     utils
-# )
+target_link_libraries(
+    main
+    utils
+)
 
 # google test
 enable_testing()

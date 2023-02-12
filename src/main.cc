@@ -1,28 +1,33 @@
 #include <iostream>
 #include <string>
+#include <string_view>
 #include "utils.h"
+
+volatile double ret;
 
 int main()
 {
-    //std::cout << "files cont: " << count_files("/home/zhaoqiu/Projects/utils") << std::endl;
-    //std::cout << get_seq("D:\\Python_study\\primer3_utils\\temp\\ABI\\Rice_reference\\Oryza_sativa.IRGSP-1.0_boruidiRename.fa", "chr2");
-    //std::cout << get_seq("D:\\Temp\\a.txt", "chr2");
-    // std::string str("a");
-    // switch (hash_(str.c_str()))
+    // int s1{123};
+    // int &s_ref_const = s1;
+    // s_ref_const += 1234;
+    // std::cout << s1 << std::endl;
+    // std::string s = R"(dfds\n)";
+    // std::cout << s << std::endl;
+    std::string s{"1234"};
+    std::string_view s_view(s);
+    std::cout << s_view << std::endl;
+    // auto start = std::chrono::system_clock::now();
+    // ret = 2;
+    // for (size_t i = 0; i < 1000000; i++)
     // {
-    // case "a"_hash:
-    //     std::cout << "a" << std::endl;
-    //     break;
-    
-    // default:
-    //     break;
+    //     ret += i;
     // }
-    std::string str("1");
-    auto v = str_split_to_int(str);
-    for (const auto& value: v)
-    {
-        std::cout << value << std::endl;
-    }
-    std::cout << "main end" << std::endl;
+    // auto end = std::chrono::system_clock::now();
+
+    // auto elapsed_time = end - start;
+    // std::chrono::duration<double> diff = end - start;
+    // std::cout << elapsed_time.count() << std::endl;
+    // std::cout << diff.count() << std::endl;
+    
     return 0;
 }

@@ -1,10 +1,14 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <chrono>
 
 typedef std::uint64_t hash_t;
 constexpr hash_t prime = 0x100000001B3ull;
 constexpr hash_t basis = 0xCBF29CE484222325ull;
+
+
+bool ends_with(const std::string& value, const std::string& ends);
 
 std::size_t count_files(const std::string& folder);
 
@@ -27,3 +31,5 @@ constexpr std::uint64_t operator""_hash(char const *p, size_t)
 {
     return hash_compile_time(p);
 }
+
+

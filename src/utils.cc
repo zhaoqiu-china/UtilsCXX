@@ -11,6 +11,12 @@
 #endif
 #include "utils.h"
 
+bool ends_with(const std::string& value, const std::string& ends)
+{
+    if (ends.size() > value.size()) return false;
+    return std::equal(ends.rbegin(), ends.rend(), value.rbegin());
+}
+
 #ifdef _WIN32
 std::size_t count_files(const std::string &folder)
 {
