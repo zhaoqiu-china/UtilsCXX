@@ -13,9 +13,9 @@ int main()
     // std::cout << s1 << std::endl;
     // std::string s = R"(dfds\n)";
     // std::cout << s << std::endl;
-    std::string s{"1234"};
-    std::string_view s_view(s);
-    std::cout << s_view << std::endl;
+    // std::string s{"1234"};
+    // std::string_view s_view(s);
+    // std::cout << s_view << std::endl;
     // auto start = std::chrono::system_clock::now();
     // ret = 2;
     // for (size_t i = 0; i < 1000000; i++)
@@ -28,6 +28,16 @@ int main()
     // std::chrono::duration<double> diff = end - start;
     // std::cout << elapsed_time.count() << std::endl;
     // std::cout << diff.count() << std::endl;
+    bool s = is_big_endian();
+    if (s)
+    {
+        std::cout << "is big endian" << std::endl;
+    } 
+    else
+    {
+        std::cout << "is not big endian" << std::endl;
+    }
+    
     
     return 0;
 }

@@ -152,3 +152,12 @@ hash_t hash_(char const *str)
     
     return ret;
 }
+
+bool is_big_endian()
+{
+	int v=0x0D0C0B0A;
+	char c = *(char*)&v;
+
+	if (c == 0x0A)	return false;
+	return true;
+}
