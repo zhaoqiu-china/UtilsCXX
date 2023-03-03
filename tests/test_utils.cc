@@ -18,4 +18,19 @@ TEST(UtilsTest, BasicAssertions) {
     EXPECT_FALSE(ends_with(value, ends1));
     EXPECT_TRUE(ends_with(value, ends2));
     EXPECT_FALSE(ends_with(value, ends3));
+
+    // use string as case in switch
+    switch (hash_compile_time("case1"))
+    {
+    case "case1"_hash:
+        std::cout << "case1" << std::endl;
+        EXPECT_EQ(1, 1);
+        break;
+    case "case2"_hash:
+        std::cout << "case2" << std::endl;
+        EXPECT_EQ(1, 2);
+        break;
+    default:
+        break;
+    }
 }
